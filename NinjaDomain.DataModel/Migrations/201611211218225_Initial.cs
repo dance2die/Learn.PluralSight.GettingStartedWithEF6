@@ -24,6 +24,7 @@ namespace NinjaDomain.DataModel.Migrations
                         Name = c.String(),
                         ServedInOniwaban = c.Boolean(nullable: false),
                         ClanId = c.Int(nullable: false),
+                        DateOfBirth = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Clans", t => t.ClanId, cascadeDelete: true)
