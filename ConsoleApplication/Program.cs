@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NinjaDomain.Classes;
 using NinjaDomain.DataModel;
 
@@ -14,9 +12,22 @@ namespace ConsoleApplication
         public static void Main(string[] args)
         {
             Database.SetInitializer(new NullDatabaseInitializer<NinjaContext>());
-            InsertNinja();
+            //InsertNinja();
+            SimpleNinjaQueries();
 
             Console.ReadLine();
+        }
+
+        private static void SimpleNinjaQueries()
+        {
+            using (var context = new NinjaContext())
+            {
+                var ninjas = context.Ninjas.ToList();
+                foreach (var ninja in ninjas)
+                {
+                    Console.WriteLine(ninja.Name);
+                }
+            }
         }
 
         private static void InsertNinja()
