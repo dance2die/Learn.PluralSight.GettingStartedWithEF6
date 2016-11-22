@@ -5,6 +5,10 @@ namespace NinjaDomain.DataModel
 {
     public class NinjaContext : DbContext
     {
+        public NinjaContext() : base("Default")
+        {
+        }
+
         public DbSet<Ninja> Ninjas { get; set; }
         public DbSet<Clan> Clans { get; set; }
         public DbSet<NinjaEquipment> Equipment { get; set; }
