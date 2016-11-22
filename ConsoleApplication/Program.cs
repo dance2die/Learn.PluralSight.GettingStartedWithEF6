@@ -21,18 +21,25 @@ namespace ConsoleApplication
 
         private static void InsertNinja()
         {
-            var ninja = new Ninja
+            var ninja1 = new Ninja
             {
-                Name = "JulieSan",
+                Name = "Leonardo",
                 ServedInOniwaban = false,
-                DateOfBirth = new DateTime(1980, 1, 1),
+                DateOfBirth = new DateTime(1984, 1, 1),
+                ClanId = 1
+            };
+            var ninja2 = new Ninja
+            {
+                Name = "Raphael",
+                ServedInOniwaban = false,
+                DateOfBirth = new DateTime(1985, 1, 1),
                 ClanId = 1
             };
 
             using (var context = new NinjaContext())
             {
                 context.Database.Log = Console.WriteLine;
-                context.Ninjas.Add(ninja);
+                context.Ninjas.AddRange(new List<Ninja> {ninja1, ninja2});
                 context.SaveChanges();
             }
         }
